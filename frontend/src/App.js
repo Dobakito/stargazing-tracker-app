@@ -13,7 +13,6 @@ function App() {
 
       <Login />
       <Switch>
-        <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
         <Route path='/profile' component={Profile} />
         <Route exact path='/objects' component={Objects}>
