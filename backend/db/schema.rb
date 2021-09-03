@@ -10,12 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_181015) do
-  create_table 'users', force: :cascade do |t|
-    t.string 'username'
-    t.string 'email'
-    t.string 'password_digest'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+ActiveRecord::Schema.define(version: 2021_09_03_173748) do
+
+  create_table "messiers", force: :cascade do |t|
+    t.string "m_number"
+    t.string "common_name"
+    t.string "description"
+    t.string "constellation"
+    t.string "obj_type"
+    t.integer "magnitude"
+    t.string "dec"
+    t.string "ra"
+    t.string "sky_pic"
+    t.string "pretty_pic"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
+
+  create_table "observations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "messier_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["messier_id"], name: "index_observations_on_messier_id"
+    t.index ["user_id"], name: "index_observations_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "observations", "messiers"
+  add_foreign_key "observations", "users"
 end

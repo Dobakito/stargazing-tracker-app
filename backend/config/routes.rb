@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get '/logged_in', to: 'sessions#is_logged_in?'
 
   resources :users, only: %i[create show index] 
-  
+  resources :objects, only: %i[create show index]
 end
