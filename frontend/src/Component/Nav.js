@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, Container } from 'semantic-ui-react';
 
 export default function Nav() {
@@ -10,7 +11,15 @@ export default function Nav() {
           <Menu.Item as='a' header>
             Stargazing Tracker
           </Menu.Item>
-          <Menu.Item as='a'>Home</Menu.Item>
+          <Menu.Item as='a'>
+            <Link to='/login'>Login</Link>
+          </Menu.Item>
+          <Menu.Item as='a'>
+            <Link to='/objects'>Feed</Link>
+          </Menu.Item>
+          <Menu.Item as='a'>
+            <Link to='/profile'>Profile</Link>
+          </Menu.Item>
         </Container>
       </Menu>
     </>

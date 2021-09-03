@@ -1,4 +1,4 @@
-class ClassName < ApplicationController::API
+class UserController < ApplicationController
     def index
         @users = User.all
            if @users
@@ -46,6 +46,6 @@ class ClassName < ApplicationController::API
 private
       
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation)
+        params.require(:user).permit(:username, :password)
     end
 end
