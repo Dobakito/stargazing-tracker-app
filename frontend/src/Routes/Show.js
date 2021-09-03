@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addObservation } from '../Actions/messiers';
 
-export default function Show() {
-  return <div></div>;
+export default class Show extends Component {
+  render() {
+    return <div></div>;
+  }
 }
+
+connect(null, { addObservation })(Show);

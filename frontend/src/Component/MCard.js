@@ -7,6 +7,7 @@ export default class MCard extends Component {
   };
 
   render() {
+    const messier = this.props;
     return (
       <Card>
         <Card.Content>
@@ -17,7 +18,7 @@ export default class MCard extends Component {
           />
         </Card.Content>
         <Card.Content>
-          <Card.Header>M57</Card.Header>
+          <Card.Header>messier</Card.Header>
           <Card.Meta>Planetary Nebula</Card.Meta>
           <Card.Description>Common name: The Ring Nebula</Card.Description>
         </Card.Content>

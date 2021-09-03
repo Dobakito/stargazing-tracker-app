@@ -5,11 +5,15 @@ import 'semantic-ui-css/semantic.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import rootReducer from '.rootReducer';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import { messierReducer } from './Reducers/messiersReducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(
+  messierReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 ReactDOM.render(
   <Provider store={store}>
