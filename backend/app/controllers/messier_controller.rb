@@ -1,14 +1,12 @@
 class MessierController < ApplicationController
   def index
     @messiers = Messier.all
-    render json: @messier
+    render json: @messiers
   end
 
   def show
     @messier = Messier.find(params[:id])
-  end
-
-  def create
+    render json: @messier
   end
 
   def update

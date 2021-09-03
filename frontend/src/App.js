@@ -24,7 +24,7 @@ class App extends Component {
         <Nav />
         <Segment
           style={{
-            minHeight: '100%',
+            minHeight: '100vh',
             padding: '1em 0em',
             backgroundImage: `url(${'https://apod.nasa.gov/apod/image/1305/ngc6960_FinalPugh.jpg'})`,
             backgroundSize: 'cover',

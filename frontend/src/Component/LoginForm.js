@@ -3,21 +3,26 @@ import { Link } from 'react-router-dom';
 import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 
 export default class LoginForm extends Component {
-  state = {
-    username: '',
-    password: '',
-  };
+  constructor() {
+    super();
+    this.state = {
+      username: '',
+      password: '',
+    };
 
-  handleChange = event => {
-    const { value, name } = event.target;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
     this.setState({
-      [name]: value,
+      [event.target.name]: event.target.value,
     });
-  };
+  }
 
-  handleSubmit = event => {
+  handleSubmit(event) {
     event.preventDefault();
-  };
+  }
 
   render() {
     return (
@@ -27,31 +32,31 @@ export default class LoginForm extends Component {
           style={{ height: '75vh' }}
           verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Header
-              as='h2'
-              color='teal'
-              textAlign='center'
-              icon='space shuttle'>
+            <Header as='h2' color='teal' textAlign='center'>
               Log-in to your account
             </Header>
             <Form size='large'>
               <Segment stacked>
                 <Form.Input
                   fluid
+                  name='username'
                   value={this.state.username}
                   icon='user'
                   iconPosition='left'
                   placeholder='Username'
                   onChange={this.handleChange}
+                  required
                 />
                 <Form.Input
                   fluid
+                  name='password'
                   value={this.state.password}
                   icon='lock'
                   iconPosition='left'
                   placeholder='Password'
                   type='password'
                   onChange={this.handleChange}
+                  required
                 />
                 <Button
                   animated

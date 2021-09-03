@@ -1,8 +1,8 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   def create
-    @user = User.find_by(username: session_params[:username])
+    @user = User.find_by(username: params[:username])
 
-    if @user && @user.authenticate(session_params[:password])
+    if @user && @user.authenticate(params[:password])
       login!
       render json: {
                logged_in: true,
