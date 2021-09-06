@@ -7,10 +7,13 @@ export const getMessier = messier => ({
   payload: messier,
 });
 
-export const getAllMessiers = messiers => ({
-  type: GET_ALL_MESSIERS,
-  payload: messiers,
-});
+export function getAllMessiers() {
+  return dispatch => {
+    fetch('http://localhost:3001/messiers')
+      .then(response => response.json())
+      .then(messiers => console.log(messiers));
+  };
+}
 
 export const addObservation = (messier, user) => ({
   type: ADD_OBSERVATION,

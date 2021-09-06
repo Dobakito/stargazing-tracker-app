@@ -1,4 +1,4 @@
-class ObservationController < ApplicationController
+class ObservationsController < ApplicationController
   def index
   end
 

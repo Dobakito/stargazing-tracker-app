@@ -9,9 +9,6 @@ export default class LoginForm extends Component {
       username: '',
       password: '',
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -20,9 +17,9 @@ export default class LoginForm extends Component {
     });
   }
 
-  handleSubmit(event) {
+  handleClick = event => {
     event.preventDefault();
-  }
+  };
 
   render() {
     return (
@@ -63,7 +60,7 @@ export default class LoginForm extends Component {
                   color='teal'
                   fluid
                   size='large'
-                  onClick={this.handleSubmit}>
+                  onClick={this.handleClick}>
                   <Button.Content visible>Login</Button.Content>
                   <Button.Content hidden>
                     <Icon name='space shuttle' />
@@ -74,7 +71,7 @@ export default class LoginForm extends Component {
                   color='red'
                   fluid
                   size='large'
-                  onClick={this.handleSubmit}>
+                  onClick={this.handleClick}>
                   <Button.Content visible>Login with Google</Button.Content>
                   <Button.Content hidden>
                     <Icon name='google' />

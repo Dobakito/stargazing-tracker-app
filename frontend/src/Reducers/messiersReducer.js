@@ -5,7 +5,10 @@ const initialState = {
 export const messierReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_MESSIERS':
-      return state;
+      return {
+        ...state,
+        messiers: action.messiers,
+      };
     default:
       return state;
   }

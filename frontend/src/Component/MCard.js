@@ -18,7 +18,7 @@ export default class MCard extends Component {
           />
         </Card.Content>
         <Card.Content>
-          <Card.Header>messier</Card.Header>
+          <Card.Header>{messier}</Card.Header>
           <Card.Meta>Planetary Nebula</Card.Meta>
           <Card.Description>Common name: The Ring Nebula</Card.Description>
         </Card.Content>
