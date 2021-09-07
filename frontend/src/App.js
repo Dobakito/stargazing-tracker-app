@@ -8,7 +8,8 @@ import Login from './Routes/Login';
 import { Component } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import Home from './Routes/Home';
-
+import { getAllMessiers } from './Actions/messiers';
+import { connect } from 'react-redux';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +17,10 @@ class App extends Component {
       isLoggedIn: false,
       user: {},
     };
+  }
+
+  componentDidMount() {
+    this.props.getAllMessiers();
   }
 
   render() {
@@ -46,9 +51,9 @@ class App extends Component {
                 </Route>
                 <Route exact path='/objects'>
                   <Objects />
-                  <Route path='/objects/:id'>
-                    <Show />
-                  </Route>
+                </Route>
+                <Route path='/show/:id'>
+                  <Show />
                 </Route>
               </Switch>
             </Container>
@@ -59,4 +64,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  getAllMessiers: () => dispatch(getAllMessiers()),
+});
+
+export default connect(null, mapDispatchToProps)(App);

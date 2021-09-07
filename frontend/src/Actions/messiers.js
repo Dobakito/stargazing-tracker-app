@@ -11,7 +11,7 @@ export function getAllMessiers() {
   return dispatch => {
     fetch('http://localhost:3001/messiers')
       .then(response => response.json())
-      .then(messiers => console.log(messiers));
+      .then(messiers => dispatch({ type: 'ADD_MESSIERS', messiers }));
   };
 }
 

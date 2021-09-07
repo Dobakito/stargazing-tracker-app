@@ -68,7 +68,7 @@ export default class LoginForm extends Component {
                 </Button>
                 <Button
                   animated
-                  color='red'
+                  color='google'
                   fluid
                   size='large'
                   onClick={this.handleClick}>
