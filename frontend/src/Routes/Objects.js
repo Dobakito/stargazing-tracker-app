@@ -9,13 +9,13 @@ class Objects extends Component {
   handleClick = event => event.preventDefault();
 
   componentDidMount() {
-    this.props.dispatch(getAllMessiers);
+    this.props.getAllMessiers();
   }
 
   render() {
-    const messiers = this.props;
+    const { messiers } = this.props;
     return (
-      <div className='Objects'>
+      <div className='Messiers'>
         <Nav />
         <Card.Group itemsPerRow={4}>
           {messiers.map(messier => (
