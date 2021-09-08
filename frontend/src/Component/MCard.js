@@ -16,7 +16,10 @@ export default function MCard({ messier }) {
       <Card.Content extra>
         <Button
           as={Link}
-          to={`/show/${messier.id}`}
+          to={{
+            pathname: `/show/${messier.id}`,
+            state: { messier: messier },
+          }}
           animated
           color='black'
           fluid

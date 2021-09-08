@@ -1,46 +1,51 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Button, Card, Container, Image } from 'semantic-ui-react';
+import React from 'react';
+import { Button, Segment, Image, Icon, Header } from 'semantic-ui-react';
 import { addObservation } from '../Actions/messiers';
-import _ from 'lodash';
+import { useLocation } from 'react-router';
 
-export default class Show extends Component {
-  handleClick = event => {
+export default function Show() {
+  const handleClick = event => {
     event.preventDefault();
     console.log(this.props);
   };
 
-  render() {
-    // const { messiers } = this.props;
-    return (
-      <div className='show'>
-        <Container>
-          <Card>
-            <Image rounded centered src={messier.pretty_pic} />
-            <Card.Content>
-              <Card.Header>{messier.m_number}</Card.Header>
-              <Card.Meta>Common name: {messier.common_name}</Card.Meta>
-              <Card.Meta>{messier.magnitude}</Card.Meta>
-              <Card.Meta>{messier.dec}</Card.Meta>
-              <Card.Meta>{messier.ra}</Card.Meta>
-              <Card.Description>
-                {messier.obj_type} in the constellation {messier.constellation}.
-              </Card.Description>
-              <Card.Description>{messier.description}</Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Button>Add to your Observations!</Button>
-            </Card.Content>
-            <Image rounded centered src={messier.sky_pic} />
-          </Card>
-        </Container>
-      </div>
-    );
-  }
+  const location = useLocation();
+  const { messier } = location.state;
+  return (
+    <div className='show'>
+      <Segment inverted>
+        <Image rounded centered fluid src={messier.pretty_pic} />
+      </Segment>
+      <Segment attached>
+        <Header centered>{messier.m_number}</Header>
+        <Header as='h2' centered>
+          Common name: {messier.common_name}
+        </Header>
+        <Header.Subheader>
+          {messier.obj_type} in the constellation {messier.constellation}.
+        </Header.Subheader>
+      </Segment>
+      <Segment attached>
+        <Header.Subheader>Magnitude: {messier.magnitude}</Header.Subheader>
+        <Header.Subheader>Dec: {messier.dec}</Header.Subheader>
+        <Header.Subheader>ra: {messier.ra}</Header.Subheader>
+        <br />
+        <Header.Content>{messier.description}</Header.Content>
+      </Segment>
+      <Segment attached>
+        <Button
+          animated
+          color='black'
+          fluid
+          size='medium'
+          onClick={handleClick}>
+          <Button.Content visible>Add to your Observations!</Button.Content>
+          <Button.Content hidden>
+            <Icon name='space shuttle' />
+          </Button.Content>
+        </Button>
+      </Segment>
+      <Image rounded centered src={messier.sky_pic} />
+    </div>
+  );
 }
-
-// mapStateToProps = state => ({
-//   messier: _.find(state, function(m){return m.id === })
-// });
-
-// connect(mapStateToProps, { addObservation })(Show);
