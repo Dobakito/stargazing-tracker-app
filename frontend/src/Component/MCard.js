@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, Icon, Image } from 'semantic-ui-react';
 
-export default function MCard({ messier }) {
+const MCard = ({ messier }) => {
   return (
     <Card>
       <Card.Content>
@@ -32,4 +32,6 @@ export default function MCard({ messier }) {
       </Card.Content>
     </Card>
   );
-}
+};
+
+export default MCard;

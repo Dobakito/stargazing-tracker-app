@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Card } from 'semantic-ui-react';
 import MCard from '../Component/MCard';
+import Nav from '../Component/Nav';
 
-class Objects extends Component {
-  render() {
-    const { messiers } = this.props;
-    return (
+const Objects = () => {
+  // const dispatch = useDispatch();
+  const messiers = useSelector(state => state.messiers);
+
+  return (
+    <>
+      <Nav />
       <div className='Messiers'>
         <Card.Group itemsPerRow={3}>
           {messiers.map(messier => (
@@ -14,12 +17,8 @@ class Objects extends Component {
           ))}
         </Card.Group>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
-const mapStateToProps = state => ({
-  messiers: state.messiers,
-});
-
-export default connect(mapStateToProps)(Objects);
+export default Objects;

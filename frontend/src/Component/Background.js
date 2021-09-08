@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
-import { Segment } from 'semantic-ui-react';
+import React from 'react';
+import { Segment, Container } from 'semantic-ui-react';
 
-export default class Background extends Component {
-  render() {
-    return (
+const Background = () => {
+  return (
+    <>
       <Segment
-        textAlign='center'
         style={{
-          minHeight: 800,
+          minHeight: '100vh',
           padding: '1em 0em',
-          backgroundImage: `url(${'https://wallpaperaccess.com/full/662638.jpg'})`,
+          backgroundImage: `url(${'https://apod.nasa.gov/apod/image/1305/ngc6960_FinalPugh.jpg'})`,
           backgroundSize: 'cover',
         }}
-        vertical
       />
-    );
-  }
-}
+      <Container style={{ marginTop: '60px' }} />
+    </>
+  );
+};
+
+export default Background;

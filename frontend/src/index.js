@@ -8,6 +8,7 @@ import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { messierReducer } from './Reducers/messiersReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 const store = createStore(
   messierReducer,
@@ -16,7 +17,12 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Auth0Provider
+      domain='dev-4nxipnay.us.auth0.com'
+      clientId='YOEFfzDCQV5uFKf0GGcqn9RMjZGM2aD2'
+      redirectUri={window.location.origin}>
+      <App />
+    </Auth0Provider>
   </Provider>,
   document.getElementById('root')
 );
