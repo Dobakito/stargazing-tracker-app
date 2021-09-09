@@ -1,17 +1,22 @@
-export const GET_ALL_MESSIERS = 'GET_ALL_MESSIERS';
-export const GET_MESSIER = 'GET_MESSIER';
-export const ADD_OBSERVATION = 'ADD_OBSERVATION';
+import axios from 'axios';
 
-export const getMessier = messier => ({
-  type: GET_MESSIER,
-  payload: messier,
-});
+export const ADD_MESSIERS = 'ADD_MESSIERS';
+export const ADD_OBSERVATION = 'ADD_OBSERVATION';
+export const ADD_USER = 'ADD_USER';
 
 export function getAllMessiers() {
   return dispatch => {
-    fetch('http://localhost:3001/messiers')
-      .then(response => response.json())
-      .then(messiers => dispatch({ type: 'ADD_MESSIERS', messiers }));
+    axios
+      .get('http://localhost:3001/messiers')
+      .then(res => dispatch({ type: ADD_MESSIERS, messiers: res.data }));
+  };
+}
+
+export function createUser(user) {
+  return dispatch => {
+    axios
+      .post('http://localhost:3001/users', user)
+      .then(res => dispatch({ type: ADD_USER, user: res.data }));
   };
 }
 

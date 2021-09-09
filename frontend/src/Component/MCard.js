@@ -8,7 +8,7 @@ const MCard = ({ messier }) => {
       <Card.Content>
         <Image centered size='medium' src={messier.pretty_pic} />
       </Card.Content>
-      <Card.Content>
+      <Card.Content textAlign='center'>
         <Card.Header>{messier.m_number}</Card.Header>
         <Card.Meta>{messier.obj_type}</Card.Meta>
         <Card.Description>Common name: {messier.common_name}</Card.Description>

@@ -17,14 +17,14 @@ const Show = () => {
         <Segment inverted>
           <Image rounded centered fluid src={messier.pretty_pic} />
         </Segment>
-        <Segment attached>
+        <Segment attached textAlign='center'>
           <Header as='h1'>{messier.m_number}</Header>
           <Header as='h2'>Common name: {messier.common_name}</Header>
           <Header.Subheader>
             {messier.obj_type} in the constellation {messier.constellation}.
           </Header.Subheader>
         </Segment>
-        <Segment attached>
+        <Segment attached textAlign='center'>
           <Header.Subheader>Magnitude: {messier.magnitude}</Header.Subheader>
           <Header.Subheader>Dec: {messier.dec}</Header.Subheader>
           <Header.Subheader>ra: {messier.ra}</Header.Subheader>

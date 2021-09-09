@@ -1,34 +1,20 @@
 import React, { useState } from 'react';
 import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 import userSchema from '../Validations/UserValidation';
+import { Formik, useFormik } from 'formik';
+import { createUser } from '../Actions/messiers';
 
 const SignupForm = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleUsername = event => {
-    setUsername(event.target.value);
-  };
-
-  const handleEmail = event => {
-    setEmail(event.target.value);
-  };
-
-  const handlePassword = event => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = async event => {
-    event.preventDefault();
-    let formData = {
-      username: username,
-      email: email,
-      password: password,
-    };
-    const isValid = await userSchema.isValid(formData);
-    console.log(isValid);
-  };
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      email: '',
+      password: '',
+    },
+    onSubmit: user => {
+      dispatchEvent(createUser(user)); //not real code, placeholder
+    },
+  });
 
   return (
     <>
@@ -41,51 +27,54 @@ const SignupForm = () => {
             <Header as='h2' color='teal' textAlign='center'>
               <Icon name='space shuttle' size='huge' /> Enter your Information!
             </Header>
-            <Form size='large'>
-              <Form.Input
-                fluid
-                name='username'
-                value={username}
-                icon='user'
-                iconPosition='left'
-                placeholder='Username'
-                onChange={handleUsername}
-                required
-              />
-              <Form.Input
-                fluid
-                name='email'
-                value={email}
-                icon='mail'
-                iconPosition='left'
-                placeholder='Email'
-                type='email'
-                onChange={handleEmail}
-                required
-              />
-              <Form.Input
-                fluid
-                name='password'
-                value={password}
-                icon='lock'
-                iconPosition='left'
-                placeholder='Password'
-                type='password'
-                onChange={handlePassword}
-                required
-              />
-              <Button
-                animated
-                color='teal'
-                fluid
-                size='large'
-                onClick={handleSubmit}>
-                <Button.Content visible>Create Account</Button.Content>
-                <Button.Content hidden>
-                  <Icon name='space shuttle' />
-                </Button.Content>
-              </Button>
-            </Form>
+            <Formik>
+              <Form size='large'>
+                <Form.Input
+                  fluid
+                  name='username'
+                  value={formik.values.username}
+                  icon='user'
+                  iconPosition='left'
+                  placeholder='Username'
+                  onChange={formik.handleChange}
+                  required
+                />
+                <Form.Input
+                  fluid
+                  name='email'
+                  value={formik.values.email}
+                  icon='mail'
+                  iconPosition='left'
+                  placeholder='Email'
+                  type='email'
+                  onChange={formik.handleChange}
+                  required
+                />
+                <Form.Input
+                  fluid
+                  name='password'
+                  value={formik.values.password}
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Password'
+                  type='password'
+                  onChange={formik.handleChange}
+                  required
+                />
+                <Button
+                  type='submit'
+                  animated
+                  color='teal'
+                  fluid
+                  size='large'
+                  onClick={formik.handleSubmit}>
+                  <Button.Content visible>Create Account</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name='space shuttle' />
+                  </Button.Content>
+                </Button>
+              </Form>
+            </Formik>
           </Segment>
         </Grid.Column>
       </Grid>
