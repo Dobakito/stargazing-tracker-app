@@ -7,6 +7,8 @@ import { Container, Segment } from 'semantic-ui-react';
 import Home from './Routes/Home';
 import { getAllMessiers } from './Actions/messiers';
 import { connect } from 'react-redux';
+import Login from './Routes/Login';
+import Signup from './Routes/Signup';
 
 class App extends Component {
   constructor(props) {
@@ -34,6 +36,12 @@ class App extends Component {
               <Switch>
                 <Route exact path='/'>
                   <Home />
+                </Route>
+                <Route path='/login'>
+                  <Login />
+                </Route>
+                <Route path='/signup'>
+                  <Signup />
                 </Route>
                 <Route path='/profile'>
                   <Profile />

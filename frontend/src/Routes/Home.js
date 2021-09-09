@@ -1,28 +1,50 @@
-import React, { Component } from 'react';
-import { Header, Grid, Segment } from 'semantic-ui-react';
-import LoginButton from '../Component/LoginButton';
-import Nav from '../Component/Nav';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Header, Grid, Segment, Icon, Button } from 'semantic-ui-react';
 
-export default class Home extends Component {
-  render() {
-    return (
-      <>
-        <Nav />
-        <Grid
-          textAlign='center'
-          style={{ height: '75vh' }}
-          verticalAlign='middle'>
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <Segment inverted stacked>
-              <Header as='h2' color='teal' textAlign='center'>
-                Welcome to the Stargazer Tracker App. Please login to begin your
-                celestual journey!
-              </Header>
-              <LoginButton />
-            </Segment>
-          </Grid.Column>
-        </Grid>
-      </>
-    );
-  }
-}
+const Home = () => {
+  return (
+    <>
+      <Grid
+        textAlign='center'
+        style={{ height: '75vh' }}
+        verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Segment textAlign='center' inverted stacked>
+            <Header as='h2' color='teal' textAlign='center'>
+              <Icon name='space shuttle' size='huge' />
+              Welcome to the Stargazer Tracker App. Please login to begin your
+              celestual journey!
+            </Header>
+            <Button
+              animated
+              as={Link}
+              to='/login'
+              color='teal'
+              fluid
+              size='large'>
+              <Button.Content visible>Login</Button.Content>
+              <Button.Content hidden>
+                <Icon name='space shuttle' />
+              </Button.Content>
+            </Button>
+            <Button
+              animated='vertical'
+              as={Link}
+              to='/signup'
+              color='violet'
+              fluid
+              size='large'>
+              <Button.Content visible>First time? Signup</Button.Content>
+              <Button.Content hidden>
+                <Icon name='rocket' />
+              </Button.Content>
+            </Button>
+          </Segment>
+        </Grid.Column>
+      </Grid>
+    </>
+  );
+};
+
+export default Home;
