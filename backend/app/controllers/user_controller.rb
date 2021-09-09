@@ -10,12 +10,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.find_or_create_by(user_params)
     if @user.save
       login!
       render json: @user
     else
-      render json: { status: 500 }
+      render json: @user
     end
   end
 

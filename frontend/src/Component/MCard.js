@@ -16,10 +16,7 @@ const MCard = ({ messier }) => {
       <Card.Content extra>
         <Button
           as={Link}
-          to={{
-            pathname: `/show/${messier.id}`,
-            state: { messier: messier },
-          }}
+          to={`/show/${messier.id}`}
           animated
           color='black'
           fluid

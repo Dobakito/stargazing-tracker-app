@@ -11,9 +11,13 @@ const Objects = () => {
     <>
       <Nav />
       <div className='Messiers'>
-        <Card.Group itemsPerRow={3}>
+        <Card.Group itemsPerRow={4}>
           {messiers.map(messier => (
-            <MCard key={messier.id.toString()} messier={messier} />
+            <MCard
+              key={messier.id}
+              onclick={this.handleClick}
+              messier={messier}
+            />
           ))}
         </Card.Group>
       </div>
