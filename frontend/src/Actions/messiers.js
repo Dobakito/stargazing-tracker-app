@@ -8,15 +8,21 @@ export function getAllMessiers() {
   return dispatch => {
     axios
       .get('http://localhost:3001/messiers')
-      .then(res => dispatch({ type: ADD_MESSIERS, messiers: res.data }));
+      .then(({ data }) => dispatch({ type: ADD_MESSIERS, messiers: data }));
   };
 }
 
 export function createUser(user) {
   return dispatch => {
     axios
-      .post('http://localhost:3001/users', user)
-      .then(res => dispatch({ type: ADD_USER, user: res.data }));
+      .post('http://localhost:3001/users', { user })
+      .then(({ data }) => dispatch({ type: ADD_USER, user: data }));
+  };
+}
+
+export function getUser(user) {
+  return dispatch => {
+    axios.get;
   };
 }
 

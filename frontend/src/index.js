@@ -4,13 +4,19 @@ import 'semantic-ui-css/semantic.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { messierReducer } from './Reducers/messiersReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { userReducer } from './Reducers/userReducer';
+
+const rootReducer = combineReducers({
+  messierReducer,
+  userReducer,
+});
 
 const store = createStore(
-  messierReducer,
+  rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
 

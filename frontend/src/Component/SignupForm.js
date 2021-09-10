@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useDispatch } from 'react';
 import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 import userSchema from '../Validations/UserValidation';
 import { Formik, useFormik } from 'formik';
 import { createUser } from '../Actions/messiers';
 
 const SignupForm = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       username: '',
       email: '',
       password: '',
     },
+    validationSchema: { userSchema },
     onSubmit: user => {
-      dispatchEvent(createUser(user)); //not real code, placeholder
+      dispatch(createUser(user));
     },
   });
 
@@ -38,6 +40,14 @@ const SignupForm = () => {
                   placeholder='Username'
                   onChange={formik.handleChange}
                   required
+                  error={
+                    formik.errors.username && formik.touched.username
+                      ? {
+                          content: `${formik.errors.username}`,
+                          pointing: 'below',
+                        }
+                      : null
+                  }
                 />
                 <Form.Input
                   fluid
@@ -49,6 +59,14 @@ const SignupForm = () => {
                   type='email'
                   onChange={formik.handleChange}
                   required
+                  error={
+                    formik.errors.username && formik.touched.username
+                      ? {
+                          content: `${formik.errors.username}`,
+                          pointing: 'below',
+                        }
+                      : null
+                  }
                 />
                 <Form.Input
                   fluid
@@ -60,6 +78,14 @@ const SignupForm = () => {
                   type='password'
                   onChange={formik.handleChange}
                   required
+                  error={
+                    formik.errors.password && formik.touched.username
+                      ? {
+                          content: `${formik.errors.username}`,
+                          pointing: 'below',
+                        }
+                      : null
+                  }
                 />
                 <Button
                   type='submit'

@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import { Formik, useFormik } from 'formik';
+import React, { useDispatch } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleUsername = event => {
-    setUsername(event.target.value);
-  };
-
-  const handlePassword = event => {
-    setPassword(event.target.value);
-  };
-
-  const handleClick = event => {
-    event.preventDefault();
-  };
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      password: '',
+    },
+    validationSchema: { loginSchema },
+    onSubmit: user => {
+      dispatch(createUser(user));
+    },
+  });
 
   return (
     <>
@@ -29,55 +27,66 @@ const LoginForm = () => {
             <Header as='h2' color='teal' textAlign='center'>
               <Icon name='space shuttle' size='huge' /> Log-in to your account
             </Header>
-            <Form size='large'>
-              <Form.Input
-                fluid
-                name='username'
-                value={username}
-                icon='user'
-                iconPosition='left'
-                placeholder='Username'
-                onChange={handleUsername}
-                required
-              />
-              <Form.Input
-                fluid
-                name='password'
-                value={password}
-                icon='lock'
-                iconPosition='left'
-                placeholder='Password'
-                type='password'
-                onChange={handlePassword}
-                required
-              />
-              <Button
-                animated
-                color='teal'
-                fluid
-                size='large'
-                onClick={handleClick}>
-                <Button.Content visible>Login</Button.Content>
-                <Button.Content hidden>
-                  <Icon name='space shuttle' />
-                </Button.Content>
-              </Button>
-              <Button
-                animated
-                color='red'
-                fluid
-                size='large'
-                onClick={handleClick}>
-                <Button.Content visible>Login with Google</Button.Content>
-                <Button.Content hidden>
-                  <Icon name='google' />
-                </Button.Content>
-              </Button>
-              <br />
-              <Link to='/signup' style={{ color: 'teal' }}>
-                First time? Signup here
-              </Link>
-            </Form>
+            <Formik>
+              <Form size='large'>
+                <Form.Input
+                  fluid
+                  name='username'
+                  value={formik.username}
+                  icon='user'
+                  iconPosition='left'
+                  placeholder='Username'
+                  onChange={formik.handleChange}
+                  required
+                  error={
+                    formik.errors.username && formik.touched.username
+                      ? {
+                          content: `${formik.errors.username}`,
+                          pointing: 'below',
+                        }
+                      : null
+                  }
+                />
+                <Form.Input
+                  fluid
+                  name='password'
+                  value={formik.password}
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Password'
+                  type='password'
+                  onChange={formik.handleChange}
+                  required
+                />
+                <Button
+                  animated
+                  color='teal'
+                  fluid
+                  size='large'
+                  onClick={formik.handleClick}>
+                  <Button.Content visible>Login</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name='space shuttle' />
+                  </Button.Content>
+                </Button>
+                <Button
+                  type='submit'
+                  animated
+                  color='red'
+                  fluid
+                  size='large'
+                  onClick={formik.handleSubmit}>
+                  <Button.Content visible>Login with Google</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name='google' />
+                  </Button.Content>
+                </Button>
+                <br />
+                <Link to='/signup' style={{ color: 'teal' }}>
+                  First time? Signup here
+                </Link>
+              </Form>
+            </Formik>
           </Segment>
         </Grid.Column>
       </Grid>
