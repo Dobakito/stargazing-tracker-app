@@ -1,8 +1,10 @@
-import React, { useDispatch } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 import userSchema from '../Validations/UserValidation';
 import { Formik, useFormik } from 'formik';
 import { createUser } from '../Actions/messiers';
+import { Link } from 'react-router-dom';
 
 const SignupForm = () => {
   const dispatch = useDispatch();
@@ -12,7 +14,7 @@ const SignupForm = () => {
       email: '',
       password: '',
     },
-    validationSchema: { userSchema },
+    validationSchema: userSchema,
     onSubmit: user => {
       dispatch(createUser(user));
     },
@@ -60,9 +62,9 @@ const SignupForm = () => {
                   onChange={formik.handleChange}
                   required
                   error={
-                    formik.errors.username && formik.touched.username
+                    formik.errors.email && formik.touched.email
                       ? {
-                          content: `${formik.errors.username}`,
+                          content: `${formik.errors.email}`,
                           pointing: 'below',
                         }
                       : null
@@ -79,9 +81,9 @@ const SignupForm = () => {
                   onChange={formik.handleChange}
                   required
                   error={
-                    formik.errors.password && formik.touched.username
+                    formik.errors.password && formik.touched.password
                       ? {
-                          content: `${formik.errors.username}`,
+                          content: `${formik.errors.password}`,
                           pointing: 'below',
                         }
                       : null
@@ -93,12 +95,16 @@ const SignupForm = () => {
                   color='teal'
                   fluid
                   size='large'
-                  onClick={formik.handleSubmit}>
+                  onSubmit={formik.handleSubmit}>
                   <Button.Content visible>Create Account</Button.Content>
                   <Button.Content hidden>
                     <Icon name='space shuttle' />
                   </Button.Content>
                 </Button>
+                <br />
+                <Link to='/login' style={{ color: 'teal' }}>
+                  Have an account? Sign in
+                </Link>
               </Form>
             </Formik>
           </Segment>

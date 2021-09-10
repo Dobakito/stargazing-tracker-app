@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const ADD_MESSIERS = 'ADD_MESSIERS';
 export const ADD_OBSERVATION = 'ADD_OBSERVATION';
-export const ADD_USER = 'ADD_USER';
+export const LOGIN_USER = 'LOGIN_USER';
 
 export function getAllMessiers() {
   return dispatch => {
@@ -16,13 +16,26 @@ export function createUser(user) {
   return dispatch => {
     axios
       .post('http://localhost:3001/users', { user })
-      .then(({ data }) => dispatch({ type: ADD_USER, user: data }));
+      .then(({ data }) => {
+        if (data.logged_in === true) {
+          dispatch({ type: LOGIN_USER, user: data.user });
+        }
+      })
+      .catch(err => console.log(err));
   };
 }
 
 export function getUser(user) {
   return dispatch => {
-    axios.get;
+    console.log(user);
+    axios
+      .post('http://localhost:3001/login', user)
+      .then(({ data }) => {
+        if (data.logged_in === true) {
+          dispatch({ type: LOGIN_USER, user: data.user });
+        }
+      })
+      .catch(err => console.log(err));
   };
 }
 

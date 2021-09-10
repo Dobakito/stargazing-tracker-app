@@ -9,6 +9,7 @@ import { getAllMessiers } from './Actions/messiers';
 import { connect } from 'react-redux';
 import Login from './Routes/Login';
 import Signup from './Routes/Signup';
+import AuthRoute from './Component/AuthRoute';
 
 class App extends Component {
   constructor(props) {
@@ -37,21 +38,21 @@ class App extends Component {
                 <Route exact path='/'>
                   <Home />
                 </Route>
-                <Route path='/login'>
+                <AuthRoute type='guest' path='/login'>
                   <Login />
-                </Route>
-                <Route path='/signup'>
+                </AuthRoute>
+                <AuthRoute type='guest' path='/signup'>
                   <Signup />
-                </Route>
-                <Route path='/profile'>
+                </AuthRoute>
+                <AuthRoute type='private' path='/profile'>
                   <Profile />
-                </Route>
-                <Route exact path='/objects'>
+                </AuthRoute>
+                <AuthRoute type='private' exact path='/objects'>
                   <Objects />
-                </Route>
-                <Route path='/show/:id'>
+                </AuthRoute>
+                <AuthRoute type='private' path='/show/:id'>
                   <Show />
-                </Route>
+                </AuthRoute>
               </Switch>
             </Container>
           </Segment>

@@ -1,18 +1,22 @@
+import history from '../utils/history';
+
 const initialState = {
   user: {},
+  isLoggedIn: false,
 };
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_USER':
+    case 'LOGIN_USER':
+      history.push('/objects');
       return {
-        ...state,
         user: action.user,
+        isLoggedIn: true,
       };
-    case 'GET_USER':
+    case 'LOGOUT_USER':
       return {
-        ...state,
-        user: action.user,
+        user: {},
+        isLoggedIn: false,
       };
     default:
       return state;

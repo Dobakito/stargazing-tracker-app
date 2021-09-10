@@ -4,16 +4,14 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  def show
-    @user = User.find(params[:id])
-    render json: @user
-  end
-
   def create
-    @user = User.create(user_params)
+    @user = User.create!(user_params)
     if @user.save
       login!
-      render json: @user
+      render json: {
+        user: @user,
+        logged_in: true,
+      }
     else
       render json: { status: 500 }
     end
@@ -22,6 +20,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :email)
+    params.require(:user).permit(:username, :email, :password)
   end
 end

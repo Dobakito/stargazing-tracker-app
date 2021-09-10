@@ -1,18 +1,21 @@
 import { Formik, useFormik } from 'formik';
-import React, { useDispatch } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
+import loginSchema from '../Validations/LoginSchema.js';
+import { getUser } from '../Actions/messiers.js';
 
-const LoginForm = () => {
+const LoginForm = props => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
     },
-    validationSchema: { loginSchema },
+    validationSchema: loginSchema,
     onSubmit: user => {
-      dispatch(createUser(user));
+      dispatch(getUser(user));
     },
   });
 
@@ -57,28 +60,25 @@ const LoginForm = () => {
                   type='password'
                   onChange={formik.handleChange}
                   required
+                  error={
+                    formik.errors.password && formik.touched.password
+                      ? {
+                          content: `${formik.errors.password}`,
+                          pointing: 'below',
+                        }
+                      : null
+                  }
                 />
                 <Button
+                  type='submit'
                   animated
                   color='teal'
                   fluid
                   size='large'
-                  onClick={formik.handleClick}>
+                  onClick={formik.handleSubmit}>
                   <Button.Content visible>Login</Button.Content>
                   <Button.Content hidden>
                     <Icon name='space shuttle' />
-                  </Button.Content>
-                </Button>
-                <Button
-                  type='submit'
-                  animated
-                  color='red'
-                  fluid
-                  size='large'
-                  onClick={formik.handleSubmit}>
-                  <Button.Content visible>Login with Google</Button.Content>
-                  <Button.Content hidden>
-                    <Icon name='google' />
                   </Button.Content>
                 </Button>
                 <br />
