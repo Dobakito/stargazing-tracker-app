@@ -12,12 +12,6 @@ import Signup from './Routes/Signup';
 import AuthRoute from './Component/AuthRoute';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn: false,
-    };
-  }
   componentDidMount() {
     this.props.getAllMessiers();
   }

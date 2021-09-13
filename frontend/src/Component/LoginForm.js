@@ -1,7 +1,7 @@
 import { Formik, useFormik } from 'formik';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 import loginSchema from '../Validations/LoginSchema.js';
 import { getUser } from '../Actions/messiers.js';

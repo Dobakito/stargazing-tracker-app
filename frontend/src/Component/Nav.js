@@ -8,13 +8,11 @@ const Nav = () => {
       <Menu fixed='top' inverted>
         <Container>
           <Menu.Item icon='space shuttle' />
-          <Menu.Item as='a' header>
-            Stargazing Tracker
-          </Menu.Item>
-          <Menu.Item as='a'>
+          <Menu.Item header>Stargazing Tracker</Menu.Item>
+          <Menu.Item>
             <Link to='/objects'>Objects</Link>
           </Menu.Item>
-          <Menu.Item as='a'>
+          <Menu.Item>
             <Link to='/profile'>Profile</Link>
           </Menu.Item>
           <Menu.Item position='right'>

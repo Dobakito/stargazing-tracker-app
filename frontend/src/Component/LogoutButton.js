@@ -1,7 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
+import { logoutUser } from '../Actions/messiers';
 
 const LogoutButton = () => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(logoutUser());
+  };
   return (
     <Button
       animated
@@ -9,8 +15,7 @@ const LogoutButton = () => {
       color='teal'
       fluid
       size='large'
-      //   onClick={}
-    >
+      onClick={handleClick}>
       <Button.Content visible>Logout</Button.Content>
       <Button.Content hidden>
         <Icon name='frown' />

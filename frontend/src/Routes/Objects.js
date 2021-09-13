@@ -5,7 +5,7 @@ import Nav from '../Component/Nav';
 
 const Objects = () => {
   // const dispatch = useDispatch();
-  const messiers = useSelector(state => state.messiers);
+  const messiers = useSelector(state => state.messierReducer.messiers);
 
   return (
     <>

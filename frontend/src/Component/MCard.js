@@ -6,9 +6,15 @@ const MCard = ({ messier }) => {
   return (
     <Card>
       <Card.Content>
-        <Image centered size='medium' src={messier.pretty_pic} />
+        <Image
+          centered
+          size='medium'
+          style={{ height: '150px' }}
+          verticalAlign='middle'
+          src={messier.pretty_pic}
+        />
       </Card.Content>
-      <Card.Content textAlign='center'>
+      <Card.Content textAlign='center' style={{ maxHeight: '120px' }}>
         <Card.Header>{messier.m_number}</Card.Header>
         <Card.Meta>{messier.obj_type}</Card.Meta>
         <Card.Description>Common name: {messier.common_name}</Card.Description>

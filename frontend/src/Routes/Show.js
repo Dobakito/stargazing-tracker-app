@@ -8,7 +8,7 @@ import Nav from '../Component/Nav';
 const Show = () => {
   const badParam = useParams();
   const id = parseInt(badParam.id) - 1;
-  const messier = useSelector(state => state.messiers[id]);
+  const messier = useSelector(state => state.messierReducer.messiers[id]);
 
   return (
     <>

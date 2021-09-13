@@ -4,14 +4,14 @@ import { Redirect, Route } from 'react-router';
 
 const AuthRoute = props => {
   const { isLoggedIn, type } = props;
-  if (type === 'guest' && isLoggedIn) return <Redirect to='/home' />;
+  if (type === 'guest' && isLoggedIn) return <Redirect to='/objects' />;
   else if (type === 'private' && !isLoggedIn) return <Redirect to='/' />;
 
   return <Route {...props} />;
 };
 
 const mapStateToProps = state => ({
-  userReducer: state.userReducer.isLoggedIn,
+  isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 export default connect(mapStateToProps)(AuthRoute);
