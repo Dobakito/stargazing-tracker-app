@@ -7,6 +7,7 @@ import Home from './Routes/Home';
 import Login from './Routes/Login';
 import Signup from './Routes/Signup';
 import AuthRoute from './Component/AuthRoute';
+import Welcome from './Routes/Welcome';
 
 const App = () => {
   return (
@@ -22,8 +23,11 @@ const App = () => {
           <Container style={{ marginTop: '60px' }}>
             <Switch>
               <Route exact path='/'>
-                <Home />
+                <Welcome />
               </Route>
+              <AuthRoute type='private' path='/home'>
+                <Home />
+              </AuthRoute>
               <AuthRoute type='guest' path='/login'>
                 <Login />
               </AuthRoute>
