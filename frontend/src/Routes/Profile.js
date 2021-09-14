@@ -11,7 +11,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getObservations());
-  }, []);
+  });
   return (
     <>
       <Nav />

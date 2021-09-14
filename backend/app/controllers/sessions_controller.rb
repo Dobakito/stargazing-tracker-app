@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       login!
-      current_user
       render json: {
                logged_in: true,
                user: @user,

@@ -1,6 +1,7 @@
 class ObservationsController < ApplicationController
   def index
-    set_user
+    # byebug
+    @user = User.find_by(id: params[:user][:id])
     @observations = @user.messiers
     render json: { observations: @observations }
   end
@@ -10,5 +11,11 @@ class ObservationsController < ApplicationController
     @user.messiers << Messier.find_by(id: params[:messierId])
     @observations = @user.messiers
     render json: { observations: @observations }
+  end
+
+  private
+
+  def observation_params
+    params.require(:user).permit(:username, :password, :id)
   end
 end
