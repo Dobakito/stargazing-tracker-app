@@ -1,15 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Button, Segment, Image, Icon, Header } from 'semantic-ui-react';
 import Nav from '../Component/Nav';
-// import { addObservation } from '../Actions/messiers';
+import { addObservation } from '../Actions/messiers';
+import _ from 'lodash';
 
 const Show = () => {
+  const dispatch = useDispatch();
   const badParam = useParams();
   const id = parseInt(badParam.id) - 1;
   const messier = useSelector(state => state.messierReducer.messiers[id]);
+  const user = useSelector(state => state.userReducer.user);
+  const observations = useSelector(
+    state => state.observationReducer.observations
+  );
 
+  const match = _.includes(observations, { id: messier.id });
+
+  console.log(match);
   return (
     <>
       <Nav />
@@ -32,8 +41,18 @@ const Show = () => {
           <Header.Content>{messier.description}</Header.Content>
         </Segment>
         <Segment attached>
-          <Button animated color='black' fluid size='medium'>
-            <Button.Content visible>Add to your Observations!</Button.Content>
+          <Button
+            disabled={match ? '' : false}
+            animated
+            color='black'
+            fluid
+            size='medium'
+            onClick={() => dispatch(addObservation(messier.id, user.id))}>
+            <Button.Content visible>
+              {match
+                ? "You've already observed this object."
+                : 'Add to your Observations!'}
+            </Button.Content>
             <Button.Content hidden>
               <Icon name='space shuttle' />
             </Button.Content>

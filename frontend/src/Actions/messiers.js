@@ -1,7 +1,6 @@
 import axios from 'axios';
-
+export const ADD_OBSERVATIONS = 'ADD_OBSERVATIONS';
 export const ADD_MESSIERS = 'ADD_MESSIERS';
-export const ADD_OBSERVATION = 'ADD_OBSERVATION';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
@@ -41,11 +40,24 @@ export function getUser(user) {
   };
 }
 
-export const logoutUser = () => ({
-  type: LOGOUT_USER,
-});
+export const logoutUser = () => ({ type: LOGOUT_USER });
 
-export const addObservation = (messier, user) => ({
-  type: ADD_OBSERVATION,
-  payload: [messier, user],
-});
+export const addObservation = (messierId, userId) => {
+  return dispatch => {
+    axios
+      .post('http://localhost:3001/observations', { messierId, userId })
+      .then(({ data }) =>
+        dispatch({ type: ADD_OBSERVATIONS, observations: data.observations })
+      );
+  };
+};
+
+export const getObservations = () => {
+  return dispatch => {
+    axios
+      .get('http://localhost:3001/observations')
+      .then(({ data }) =>
+        dispatch({ type: ADD_OBSERVATIONS, observations: data.observations })
+      );
+  };
+};

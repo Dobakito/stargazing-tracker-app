@@ -9,6 +9,10 @@ export const messierReducer = (state = initialState, action) => {
         ...state,
         messiers: action.messiers,
       };
+    case 'LOGOUT_USER':
+      return {
+        messiers: [],
+      };
     default:
       return state;
   }

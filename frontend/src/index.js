@@ -12,15 +12,16 @@ import reportWebVitals from './reportWebVitals';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
+import { observationReducer } from './Reducers/observationsReducer';
 
 const rootReducer = combineReducers({
   messierReducer,
   userReducer,
+  observationReducer,
 });
 const persistConfig = {
-  key: 'userReducer',
+  key: 'root',
   storage: storage,
-  whitelist: ['userReducer'], // which reducer want to store
 };
 const pReducer = persistReducer(persistConfig, rootReducer);
 

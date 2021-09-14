@@ -9,7 +9,7 @@ const MCard = ({ messier }) => {
         <Image
           centered
           size='medium'
-          style={{ height: '150px' }}
+          style={{ height: '200px' }}
           verticalAlign='middle'
           src={messier.pretty_pic}
         />

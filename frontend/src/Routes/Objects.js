@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Card } from 'semantic-ui-react';
+import { Card, Segment, Header } from 'semantic-ui-react';
 import MCard from '../Component/MCard';
 import Nav from '../Component/Nav';
 
@@ -10,6 +10,9 @@ const Objects = () => {
   return (
     <>
       <Nav />
+      <Segment textAlign='center' inverted>
+        <Header as='h2'>View all of the Messier Objects</Header>
+      </Segment>
       <div className='Messiers'>
         <Card.Group itemsPerRow={4}>
           {messiers.map(messier => (
