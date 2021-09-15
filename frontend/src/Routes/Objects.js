@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Segment, Header } from 'semantic-ui-react';
@@ -9,7 +10,7 @@ const Objects = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllMessiers());
-  });
+  }, []);
   const messiers = useSelector(state => state.messierReducer.messiers);
 
   return (

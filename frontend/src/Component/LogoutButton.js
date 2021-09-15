@@ -15,7 +15,7 @@ const LogoutButton = () => {
       color='teal'
       fluid
       size='large'
-      onClick={handleClick()}>
+      onClick={handleClick}>
       <Button.Content visible>Logout</Button.Content>
       <Button.Content hidden>
         <Icon name='frown' />
