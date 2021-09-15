@@ -50,11 +50,13 @@ export function logoutUser() {
   };
 }
 
-export const addObservation = (messierId, userId) => {
+export const addObservation = (messier_id, user_id) => {
   return dispatch => {
-    console.log({ messierId, userId });
     axios
-      .post('http://localhost:3001/observations', { messierId, userId })
+      .post(`http://localhost:3001/${user_id}/observations`, {
+        messier_id,
+        user_id,
+      })
       .then(({ data }) =>
         dispatch({ type: ADD_OBSERVATIONS, observations: data.observations })
       )
@@ -62,10 +64,10 @@ export const addObservation = (messierId, userId) => {
   };
 };
 
-export const getObservations = () => {
+export const getObservations = user_id => {
   return dispatch => {
     axios
-      .get('http://localhost:3001/observations')
+      .get(`http://localhost:3001/${user_id}/observations`)
       .then(({ data }) =>
         dispatch({ type: ADD_OBSERVATIONS, observations: data.observations })
       )

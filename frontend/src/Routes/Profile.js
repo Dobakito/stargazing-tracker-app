@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Header, Segment } from 'semantic-ui-react';
@@ -10,8 +11,8 @@ const Profile = () => {
   const user = useSelector(state => state.userReducer.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getObservations());
-  });
+    dispatch(getObservations(user.id));
+  }, []);
   return (
     <>
       <Nav />
