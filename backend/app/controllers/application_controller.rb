@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::API
-  include ActionController::Cookies
-
+  include ::ActionController::Cookies
   helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!, :set_user
 
   def login!

@@ -1,6 +1,7 @@
 class ObservationsController < ApplicationController
   def index
-    @user = User.find_by(id: session[:user_id])
+    # byebug
+    @user = User.find_by(id: params[:user][:id])
     @observations = @user.messiers
     render json: { observations: @observations }
   end

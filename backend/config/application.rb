@@ -23,11 +23,13 @@ module Backend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-    config.api_only = false
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
 
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
@@ -35,14 +37,7 @@ module Backend
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-
-    config.session_store :cookie_store, key: "_user_session"
-
-    config.middleware.use config.session_store, config.session_options
-
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore, key: "_stargazing_tracker"
-    config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore, key: "_stargazing_tracker")
+    config.api_only = true
     config.action_controller.default_protect_from_forgery = true
   end
 end
