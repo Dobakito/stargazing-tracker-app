@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Button, Segment, Image, Icon, Header } from 'semantic-ui-react';
 import Nav from '../Component/Nav';
-import { addObservation } from '../Actions/messiers';
 import _ from 'lodash';
+import { addObservation } from '../Actions/observationActions';
 
 const Show = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const Show = () => {
     state => state.observationReducer.observations
   );
 
-  const match = _.includes(observations, { id: messier.id });
+  const match = _.find(observations, messier);
 
   console.log(match);
   return (
@@ -42,7 +43,8 @@ const Show = () => {
         </Segment>
         <Segment attached>
           <Button
-            disabled={match ? '' : false}
+            className='addObservation'
+            disabled={match ? true : false}
             animated
             color='black'
             fluid

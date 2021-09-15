@@ -3,8 +3,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
+import { getUser } from '../Actions/userActions.js';
 import loginSchema from '../Validations/LoginSchema.js';
-import { getUser } from '../Actions/messiers.js';
 
 const LoginForm = props => {
   const dispatch = useDispatch();

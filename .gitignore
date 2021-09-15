@@ -2,3 +2,4 @@ backend/tmp
 backend/log
 backend/test
 backend/log/development.log
+backend/.byebug_history

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
-import { logoutUser } from '../Actions/messiers';
+import { logoutUser } from '../Actions/userActions';
 
 const LogoutButton = () => {
   const dispatch = useDispatch();

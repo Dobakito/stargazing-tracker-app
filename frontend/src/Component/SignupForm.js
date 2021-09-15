@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Button, Form, Grid, Header, Segment, Icon } from 'semantic-ui-react';
 import userSchema from '../Validations/UserValidation';
 import { Formik, useFormik } from 'formik';
-import { createUser } from '../Actions/messiers';
 import { Link } from 'react-router-dom';
+import { createUser } from '../Actions/userActions';
 
 const SignupForm = () => {
   const dispatch = useDispatch();

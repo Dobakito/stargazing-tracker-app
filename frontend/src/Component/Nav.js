@@ -8,7 +8,9 @@ const Nav = () => {
       <Menu fixed='top' inverted>
         <Container>
           <Menu.Item icon='space shuttle' />
-          <Menu.Item header>Stargazing Tracker</Menu.Item>
+          <Menu.Item header>
+            <Link to='/home'> Stargazing Tracker</Link>
+          </Menu.Item>
           <Menu.Item>
             <Link to='/objects'>Objects</Link>
           </Menu.Item>

@@ -15,9 +15,9 @@ const Home = () => {
             <Header as='h2' color='teal' textAlign='center'>
               <Icon name='space shuttle' size='huge' />
               Please click an option in the Navbar to begin!
-              <Header.Subheader color='teal' textAlign='center'>
+              <Header color='teal' as='h4'>
                 Enjoy a NASA Pic of the Day below.
-              </Header.Subheader>
+              </Header>
             </Header>
           </Segment>
         </Grid.Column>

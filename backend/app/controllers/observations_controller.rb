@@ -1,13 +1,11 @@
 class ObservationsController < ApplicationController
   def index
-    # byebug
-    @user = User.find_by(id: params[:user][:id])
+    @user = User.find_by(id: params[:user_id])
     @observations = @user.messiers
     render json: { observations: @observations }
   end
 
   def create
-    byebug
     @user = User.find_by(id: params[:user_id])
     @user.messiers << Messier.find_by(id: params[:messier_id])
     @observations = @user.messiers

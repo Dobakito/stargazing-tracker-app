@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Header, Segment } from 'semantic-ui-react';
-import { getObservations } from '../Actions/messiers';
 import MCard from '../Component/MCard';
 import Nav from '../Component/Nav';
+import { getObservations } from '../Actions/observationActions';
 
 const Profile = () => {
   const messiers = useSelector(state => state.observationReducer.observations);
