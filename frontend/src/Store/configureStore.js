@@ -4,6 +4,7 @@ import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
+import { apodReducer } from '../Reducers/apodReducer';
 import { messierReducer } from '../Reducers/messiersReducer';
 import { observationReducer } from '../Reducers/observationsReducer';
 import { userReducer } from '../Reducers/userReducer';
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   messierReducer,
   userReducer,
   observationReducer,
+  apodReducer,
 });
 const persistConfig = {
   key: 'root',

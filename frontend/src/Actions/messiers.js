@@ -14,7 +14,9 @@ export function getAllMessiers() {
 export function getNasaPic() {
   return dispatch => {
     axios
-      .get('https://api.nasa.gov/planetary/apod')
+      .get(
+        'https://api.nasa.gov/planetary/apod?api_key=MbDta2jpJYYuR0sqggJKGiMxKjmJFCZ9B4rNV9sm'
+      )
       .then(({ data }) => dispatch({ type: ADD_APOD, apod: data }))
       .catch(error => console.log(error));
   };

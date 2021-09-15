@@ -1,8 +1,17 @@
-import React from 'react';
-import { Header, Grid, Segment, Icon } from 'semantic-ui-react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Header, Grid, Segment, Image } from 'semantic-ui-react';
+import { getNasaPic } from '../Actions/messiers';
 import Nav from '../Component/Nav';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const apod = useSelector(state => state.apodReducer.apod);
+  useEffect(() => {
+    dispatch(getNasaPic());
+  }, []);
+  console.log(apod);
   return (
     <>
       <Nav />
@@ -10,14 +19,17 @@ const Home = () => {
         textAlign='center'
         style={{ height: '75vh' }}
         verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ maxWidth: 800 }}>
           <Segment textAlign='center' inverted stacked>
             <Header as='h2' color='teal' textAlign='center'>
-              <Icon name='space shuttle' size='huge' />
               Please click an option in the Navbar to begin!
-              <Header color='teal' as='h4'>
-                Enjoy a NASA Pic of the Day below.
-              </Header>
+            </Header>
+            <Header color='teal' as='h4'>
+              Enjoy the NASA Astronomy Pic of the Day below.
+            </Header>
+            <Image rounded fluid src={apod.url} />
+            <Header as='h5' color='teal'>
+              "{apod.explanation}"
             </Header>
           </Segment>
         </Grid.Column>

@@ -8,6 +8,7 @@ const MCard = ({ messier }) => {
       <Card.Content>
         <Image
           centered
+          rounded
           size='medium'
           style={{ height: '200px' }}
           verticalAlign='middle'
