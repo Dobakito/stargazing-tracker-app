@@ -32,7 +32,7 @@ const SignupForm = () => {
               <Icon name='space shuttle' size='huge' /> Enter your Information!
             </Header>
             <Formik>
-              <Form size='large'>
+              <Form size='large' onSubmit={formik.handleSubmit}>
                 <Form.Input
                   fluid
                   name='username'
@@ -41,6 +41,7 @@ const SignupForm = () => {
                   iconPosition='left'
                   placeholder='Username'
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   required
                   error={
                     formik.errors.username && formik.touched.username
@@ -60,6 +61,7 @@ const SignupForm = () => {
                   placeholder='Email'
                   type='email'
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   required
                   error={
                     formik.errors.email && formik.touched.email
@@ -79,6 +81,7 @@ const SignupForm = () => {
                   placeholder='Password'
                   type='password'
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   required
                   error={
                     formik.errors.password && formik.touched.password
@@ -89,13 +92,7 @@ const SignupForm = () => {
                       : null
                   }
                 />
-                <Button
-                  type='submit'
-                  animated
-                  color='teal'
-                  fluid
-                  size='large'
-                  onSubmit={formik.handleSubmit}>
+                <Button type='submit' animated color='teal' fluid size='large'>
                   <Button.Content visible>Create Account</Button.Content>
                   <Button.Content hidden>
                     <Icon name='space shuttle' />

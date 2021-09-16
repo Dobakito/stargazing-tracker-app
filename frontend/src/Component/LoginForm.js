@@ -40,6 +40,7 @@ const LoginForm = props => {
                   iconPosition='left'
                   placeholder='Username'
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   required
                   error={
                     formik.errors.username && formik.touched.username
@@ -59,6 +60,7 @@ const LoginForm = props => {
                   placeholder='Password'
                   type='password'
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   required
                   error={
                     formik.errors.password && formik.touched.password

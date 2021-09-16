@@ -37,7 +37,7 @@ const App = () => {
               <AuthRoute type='private' path='/profile'>
                 <Profile />
               </AuthRoute>
-              <AuthRoute type='private' exact path='/objects'>
+              <AuthRoute type='private' path='/objects'>
                 <Objects />
               </AuthRoute>
               <AuthRoute type='private' path='/show/:id'>
