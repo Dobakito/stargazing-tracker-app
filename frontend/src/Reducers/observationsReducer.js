@@ -10,9 +10,7 @@ export const observationReducer = (state = initialState, action) => {
         observations: action.observations,
       };
     case 'LOGOUT_USER':
-      return {
-        observations: [],
-      };
+      return initialState;
     default:
       return state;
   }

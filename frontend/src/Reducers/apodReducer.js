@@ -10,9 +10,7 @@ export const apodReducer = (state = initialState, action) => {
         apod: action.apod,
       };
     case 'LOGOUT_USER':
-      return {
-        apod: [],
-      };
+      return initialState;
     default:
       return state;
   }

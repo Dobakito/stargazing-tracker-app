@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Container } from 'semantic-ui-react';
 import LogoutButton from './LogoutButton';
+import SearchBar from './SearchBar';
 const Nav = () => {
   return (
     <>
@@ -16,6 +17,9 @@ const Nav = () => {
           </Menu.Item>
           <Menu.Item>
             <Link to='/profile'>Profile</Link>
+          </Menu.Item>
+          <Menu.Item position='right'>
+            <SearchBar />
           </Menu.Item>
           <Menu.Item position='right'>
             <LogoutButton />

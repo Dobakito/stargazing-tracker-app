@@ -1,16 +1,20 @@
 class FriendshipsController < ApplicationController
-  def create
-    if params.include?(:friend_id)
-      @new_friendships = Friendship.create_reciprocal_for_ids(current_user_id, params[:friend_id])
-    else
-      params[:user][:friend_ids].each do |f_id|
-        @new_friendships = Friendship.create_reciprocal_for_ids(current_user_id, f_id)
-      end
-    end
+  def index
+    @user = User.find_by(id: params[:user_id])
+    @friends = @user.friends
+    render json: { friends: @friends }
   end
 
-  def destroy
-    Friendship.destroy_reciprocal_for_ids(current_user_id, params[:friend_id])
-    redirect_to(request.referer)
+  def create
+    user_friendship = Friendship.create(user_id: params[:user_id], friend_id: params[:friend_id])
+    friend_friendship = Friendship.create(user_id: params[:friend_id], friend_id: params[:user_id])
+    if user_friendship.save && friend_friendship.save
+      render json: { success: true }
+    else
+      render json: {
+               status: 500,
+               message: "Failed to add friend",
+             }
+    end
   end
 end

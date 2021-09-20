@@ -1,6 +1,7 @@
 import axios from 'axios';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
+export const GET_USERS = 'GET_USERS';
 
 export function createUser(user) {
   return dispatch => {
@@ -17,13 +18,23 @@ export function createUser(user) {
 
 export function getUser(user) {
   return dispatch => {
-    console.log(user);
     axios
       .post('http://localhost:3001/login', user, { withCredentials: true })
       .then(({ data }) => {
         if (data.logged_in === true) {
           dispatch({ type: LOGIN_USER, user: data.user });
         }
+      })
+      .catch(err => console.log(err));
+  };
+}
+
+export function getAllUsers() {
+  return dispatch => {
+    axios
+      .get('http://localhost:3001/users', { withCredentials: true })
+      .then(({ data }) => {
+        dispatch({ type: GET_USERS, user: data.users });
       })
       .catch(err => console.log(err));
   };

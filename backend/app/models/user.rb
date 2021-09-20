@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_many :observations
   has_many :messiers, through: :observations
-  has_many :friendships, dependent: :destroy
+  has_many :friendships
   has_many :friends, through: :friendships
 
   validates :username, presence: true, uniqueness: true
