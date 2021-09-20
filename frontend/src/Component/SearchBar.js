@@ -1,38 +1,42 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useReducer } from 'react';
-import { getAllUsers } from '../Actions/userActions';
+// import { useEffect, useReducer } from 'react';
+// import { getAllUsers } from '../Actions/userActions';
+import { useState } from 'react';
 import _ from 'lodash';
-import { searchReducer } from '../Reducers/searchReducer';
 import { Label, Search } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import * as JsSearch from 'js-search';
+import { useSelector } from 'react-redux';
 
 const SearchBar = () => {
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, []);
-  const [state, dispatch] = useReducer(searchReducer);
-  const { results, users, value } = state;
+  const [results, setResults] = useState([]);
+  const [value, setValue] = useState('');
+  const users = useSelector(state => state.searchReducer.users);
+  const search = new JsSearch.Search('username');
+  search.addDocument(users);
 
-  const handleSearchChange = (e, data) => {
-    dispatch({ type: 'START_SEARCH', query: data.value });
-    if (data.value.length === 0) {
-      dispatch({ type: 'CLEAN_QUERY' });
-      return;
-    }
-    const re = new RegExp(_.escapeRegExp(data.value), 'i');
-    const isMatch = result => re.test(result.username);
-    dispatch({
-      type: 'FINISH_SEARCH',
-      results: _.filter(users, isMatch),
-    });
+  const handleResultSelect = (e, { result }) => {
+    setValue([]);
   };
-  const resultRenderer = ({ username, id }) => (
+
+  const handleSearchChange = e => {
+    let value = e.target.value;
+    setValue(value);
+    if (value.length < 1) {
+      return setResults([]);
+    }
+    const re = new RegExp(_.escapeRegExp(value), 'i');
+    const isMatch = result => re.test(result.username);
+    setResults(_.filter(users, isMatch));
+  };
+
+  const resultRenderer = ({ id, username }) => (
     <Label as={Link} to={`/user/${id}`} content={username} />
   );
 
   return (
     <Search
-      onResultSelect={() => dispatch({ type: 'CLEAN_QUERY' })}
+      onResultSelect={handleResultSelect}
       onSearchChange={handleSearchChange}
       resultRenderer={resultRenderer}
       results={results}

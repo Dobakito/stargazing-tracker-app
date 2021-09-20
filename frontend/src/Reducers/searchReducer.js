@@ -1,10 +1,10 @@
-export const initialState = {
+export const initialSearchState = {
   users: [],
   results: [],
   value: '',
 };
 
-export const searchReducer = (state = initialState, action) => {
+export const searchReducer = (state = initialSearchState, action) => {
   switch (action.type) {
     case 'GET_USERS':
       return { ...state, users: action.users };
@@ -15,7 +15,7 @@ export const searchReducer = (state = initialState, action) => {
     case 'FINISH_SEARCH':
       return { ...state, results: action.results };
     case 'LOGOUT_USER':
-      return initialState;
+      return initialSearchState;
     default:
       return state;
   }

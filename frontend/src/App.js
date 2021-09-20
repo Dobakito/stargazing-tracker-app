@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Profile from './Routes/Profile';
 import Objects from './Routes/Objects';
@@ -8,8 +9,16 @@ import Login from './Routes/Login';
 import Signup from './Routes/Signup';
 import AuthRoute from './Component/AuthRoute';
 import Welcome from './Routes/Welcome';
+import { useEffect } from 'react';
+import { getAllUsers } from './Actions/userActions';
+import { useDispatch } from 'react-redux';
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, []);
+
   return (
     <Router>
       <div className='App'>
