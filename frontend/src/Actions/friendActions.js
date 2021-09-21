@@ -10,6 +10,7 @@ export function createFriend(user_id, friend_id) {
         { withCredentials: true }
       )
       .then(({ data }) => {
+        console.log(data);
         if (data.success === true) {
           dispatch({ type: GET_FRIENDS, user: data.user });
         }
@@ -25,7 +26,7 @@ export function getFriends(user_id) {
         withCredentials: true,
       })
       .then(({ data }) => {
-        dispatch({ type: GET_FRIENDS, user: data.friends });
+        dispatch({ type: GET_FRIENDS, friends: data.friends });
       })
       .catch(err => console.log(err));
   };

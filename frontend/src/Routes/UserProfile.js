@@ -6,30 +6,47 @@ import MCard from '../Component/MCard';
 import Nav from '../Component/Nav';
 import { getObservations } from '../Actions/observationActions';
 import { useParams } from 'react-router';
-import { createFriend } from '../Actions/friendActions';
+import { createFriend, getFriends } from '../Actions/friendActions';
+import _ from 'lodash';
 
 const UserProfile = () => {
-  const badParam = useParams();
-  const id = parseInt(badParam.id) + 1;
+  const param = useParams();
+  const id = parseInt(param.id) - 1;
   const messiers = useSelector(state => state.observationReducer.observations);
   const currentUser = useSelector(state => state.userReducer.user);
   const user = useSelector(state => state.searchReducer.users[id]);
-
+  const friends = useSelector(state => state.friendsReducer.friends);
+  const match = _.find(friends, user);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getObservations(user.id));
+    dispatch(getFriends(currentUser.id));
   }, []);
 
   const handleClick = () => {
     dispatch(createFriend(currentUser.id, user.id));
   };
+  console.log('user: ', user);
+  console.log('friends: ', friends);
+  console.log('match:', match);
   return (
     <>
       <Nav />
       <Segment textAlign='center' inverted>
         <Header as='h2'>View all {user.username}'s Observations</Header>
-        <Button animated color='teal' fluid size='medium' onClick={handleClick}>
-          <Button.Content visible>Add Friend!</Button.Content>
+        <Button
+          disabled={match ? true : false}
+          animated
+          color='teal'
+          fluid
+          size='medium'
+          onClick={handleClick}>
+          <Button.Content visible>
+            {match
+              ? `You and ${user.username} are already friends`
+              : `Add ${user.username} as a friend!`}
+          </Button.Content>
           <Button.Content hidden>
             <Icon name='user plus' />
           </Button.Content>

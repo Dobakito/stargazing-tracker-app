@@ -36,7 +36,7 @@ const SearchBar = () => {
   };
 
   const resultRenderer = ({ id, username }) => (
-    <Label fluid as={Link} to={`/user/${id}`} content={username} />
+    <Label as={Link} to={`/user/${id + 1}`} content={username} />
   );
 
   return (
@@ -44,7 +44,6 @@ const SearchBar = () => {
       onResultSelect={handleResultSelect}
       onSearchChange={handleSearchChange}
       noResultsMessage='No users found.'
-      defaultValue='Search for Users.'
       resultRenderer={resultRenderer}
       results={results}
       value={value}
