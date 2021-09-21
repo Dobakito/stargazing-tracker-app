@@ -11,7 +11,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(getNasaPic());
   }, []);
-  console.log(apod);
   return (
     <>
       <Nav />
@@ -28,6 +27,9 @@ const Home = () => {
               Enjoy the NASA Astronomy Pic of the Day below.
             </Header>
             <Image rounded fluid src={apod.url} />
+            <Header as='h5' color='teal'>
+              Picture explination:
+            </Header>
             <Header as='h5' color='teal'>
               "{apod.explanation}"
             </Header>

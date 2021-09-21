@@ -13,6 +13,7 @@ const MCard = ({ messier }) => {
           style={{ height: '200px' }}
           verticalAlign='middle'
           src={messier.pretty_pic}
+          alt='Pretty image of space'
         />
       </Card.Content>
       <Card.Content textAlign='center' style={{ maxHeight: '120px' }}>

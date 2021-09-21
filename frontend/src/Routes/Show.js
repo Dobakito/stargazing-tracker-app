@@ -25,7 +25,13 @@ const Show = () => {
       <Nav />
       <div className='show'>
         <Segment inverted>
-          <Image rounded centered fluid src={messier.pretty_pic} />
+          <Image
+            rounded
+            centered
+            fluid
+            alt='A pretty image of space'
+            src={messier.pretty_pic}
+          />
         </Segment>
         <Segment attached textAlign='center'>
           <Header as='h1'>{messier.m_number}</Header>
@@ -60,7 +66,12 @@ const Show = () => {
             </Button.Content>
           </Button>
         </Segment>
-        <Image rounded centered src={messier.sky_pic} />
+        <Image
+          rounded
+          centered
+          alt='a skymap for this object'
+          src={messier.sky_pic}
+        />
       </div>
     </>
   );

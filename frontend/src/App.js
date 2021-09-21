@@ -9,16 +9,9 @@ import Login from './Routes/Login';
 import Signup from './Routes/Signup';
 import AuthRoute from './Component/AuthRoute';
 import Welcome from './Routes/Welcome';
-import { useEffect } from 'react';
-import { getAllUsers } from './Actions/userActions';
-import { useDispatch } from 'react-redux';
+import UserProfile from './Routes/UserProfile';
 
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, []);
-
   return (
     <Router>
       <div className='App'>
@@ -47,7 +40,7 @@ const App = () => {
                 <Profile />
               </AuthRoute>
               <AuthRoute type='private' path='/user/:id'>
-                <Profile />
+                <UserProfile />
               </AuthRoute>
               <AuthRoute type='private' path='/objects'>
                 <Objects />
