@@ -11,10 +11,10 @@ import _ from 'lodash';
 
 const UserProfile = () => {
   const param = useParams();
-  const id = parseInt(param.id) - 1;
+  const allUsers = useSelector(state => state.searchReducer.users);
+  const user = _.find(allUsers, param);
   const messiers = useSelector(state => state.observationReducer.observations);
   const currentUser = useSelector(state => state.userReducer.user);
-  const user = useSelector(state => state.searchReducer.users[id]);
   const friends = useSelector(state => state.friendsReducer.friends);
   const match = _.find(friends, user);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const UserProfile = () => {
   const handleClick = () => {
     dispatch(createFriend(currentUser.id, user.id));
   };
-  console.log('user: ', user);
+  console.log('user: ', user.id);
   console.log('friends: ', friends);
   console.log('match:', match);
   return (

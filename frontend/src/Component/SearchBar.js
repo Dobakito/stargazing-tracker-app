@@ -31,12 +31,11 @@ const SearchBar = () => {
     }
     const re = new RegExp(_.escapeRegExp(value), 'i');
     const isMatch = result => re.test(result.username);
-    console.log(isMatch);
     setResults(_.filter(users, isMatch));
   };
 
-  const resultRenderer = ({ id, username }) => (
-    <Label as={Link} to={`/user/${id + 1}`} content={username} />
+  const resultRenderer = ({ username }) => (
+    <Label as={Link} to={`/user/${username}`} content={username} />
   );
 
   return (

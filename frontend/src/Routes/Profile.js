@@ -18,7 +18,6 @@ const Profile = () => {
     dispatch(getObservations(user.id));
     dispatch(getFriends(user.id));
   }, []);
-  console.log(friends);
   return (
     <>
       <Nav />
@@ -40,7 +39,7 @@ const Profile = () => {
               <Modal.Content
                 key={friend.id}
                 as={Link}
-                to={`/user/${friend.id}`}>
+                to={`/user/${friend.username}`}>
                 {friend.username}
               </Modal.Content>
             ))}

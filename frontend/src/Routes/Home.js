@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Header, Grid, Segment, Image } from 'semantic-ui-react';
+import { Header, Grid, Segment, Image, Embed } from 'semantic-ui-react';
 import { getNasaPic } from '../Actions/messiers';
 import Nav from '../Component/Nav';
 
@@ -11,6 +11,20 @@ const Home = () => {
   useEffect(() => {
     dispatch(getNasaPic());
   }, []);
+
+  const renderMedia = () => {
+    if (apod.media_type === 'video')
+      return (
+        <Embed
+          hd={true}
+          active={true}
+          url={apod.url}
+          placeholder='https://tikipets.com/wp-content/uploads/2017/05/video-placeholder.png'
+          source='youtube'
+        />
+      );
+    else return <Image rounded fluid src={apod.url} />;
+  };
   return (
     <>
       <Nav />
@@ -26,7 +40,7 @@ const Home = () => {
             <Header color='teal' as='h4'>
               Enjoy the NASA Astronomy Pic of the Day below.
             </Header>
-            <Image rounded fluid src={apod.url} />
+            {renderMedia()}
             <Header as='h5' color='teal'>
               Picture explination:
             </Header>
