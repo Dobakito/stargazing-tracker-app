@@ -22,14 +22,12 @@ const UserProfile = () => {
   useEffect(() => {
     dispatch(getObservations(user.id));
     dispatch(getFriends(currentUser.id));
-  }, []);
+  }, [user]);
 
   const handleClick = () => {
     dispatch(createFriend(currentUser.id, user.id));
   };
-  console.log('user: ', user.id);
-  console.log('friends: ', friends);
-  console.log('match:', match);
+
   return (
     <>
       <Nav />

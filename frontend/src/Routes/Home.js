@@ -20,7 +20,6 @@ const Home = () => {
           active={true}
           url={apod.url}
           placeholder='https://tikipets.com/wp-content/uploads/2017/05/video-placeholder.png'
-          source='youtube'
         />
       );
     else return <Image rounded fluid src={apod.url} />;

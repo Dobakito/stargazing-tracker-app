@@ -34,7 +34,6 @@ export function getAllUsers() {
     axios
       .get('http://localhost:3001/users', { withCredentials: true })
       .then(({ data }) => {
-        console.log(data);
         dispatch({ type: GET_USERS, users: data.users });
       })
       .catch(err => console.log(err));

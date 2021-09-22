@@ -10,7 +10,9 @@ import { getAllUsers } from '../Actions/userActions';
 const SearchBar = () => {
   const [results, setResults] = useState([]);
   const [value, setValue] = useState('');
-  const users = useSelector(state => state.searchReducer.users);
+  const badAllUsers = useSelector(state => state.searchReducer.users);
+  const currentUser = useSelector(state => state.userReducer.user);
+  const users = _.reject(badAllUsers, currentUser);
   const search = new JsSearch.Search('username');
   search.addDocument(users);
 
