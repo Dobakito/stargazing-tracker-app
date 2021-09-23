@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Grid, Segment, Icon, Button } from 'semantic-ui-react';
-import LogoutButton from '../Component/LogoutButton';
 
 const Welcome = () => {
   return (
@@ -41,8 +40,6 @@ const Welcome = () => {
                 <Icon name='rocket' />
               </Button.Content>
             </Button>
-            <br />
-            <LogoutButton />
           </Segment>
         </Grid.Column>
       </Grid>

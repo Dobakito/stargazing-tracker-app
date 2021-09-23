@@ -16,7 +16,6 @@ const UserProfile = () => {
   const messiers = useSelector(state => state.observationReducer.observations);
   const currentUser = useSelector(state => state.userReducer.user);
   const friends = useSelector(state => state.friendsReducer.friends);
-  const match = _.find(friends, user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +25,9 @@ const UserProfile = () => {
 
   const handleClick = () => {
     dispatch(createFriend(currentUser.id, user.id));
+    _.find(friends, user);
   };
+  const match = _.find(friends, user);
 
   return (
     <>

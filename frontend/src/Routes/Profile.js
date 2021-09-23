@@ -16,8 +16,12 @@ const Profile = () => {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     dispatch(getObservations(user.id));
-    dispatch(getFriends(user.id));
   }, []);
+
+  useEffect(() => {
+    dispatch(getFriends(user.id));
+  }, [open]);
+
   return (
     <>
       <Nav />

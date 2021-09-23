@@ -16,7 +16,6 @@ const Home = () => {
     if (apod.media_type === 'video')
       return (
         <Embed
-          hd={true}
           active={true}
           url={apod.url}
           placeholder='https://tikipets.com/wp-content/uploads/2017/05/video-placeholder.png'

@@ -17,10 +17,10 @@ const App = () => {
       <div className='App'>
         <Segment
           style={{
-            minHeight: '100vh',
+            minHeight: '110vh',
             padding: '1em 0em',
             backgroundImage: `url(${'https://apod.nasa.gov/apod/image/1305/ngc6960_FinalPugh.jpg'})`,
-            backgroundSize: 'cover',
+            backgroundSize: '',
           }}>
           <Container style={{ marginTop: '60px' }}>
             <Switch>

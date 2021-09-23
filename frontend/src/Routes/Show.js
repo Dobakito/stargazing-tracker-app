@@ -16,10 +16,8 @@ const Show = () => {
   const observations = useSelector(
     state => state.observationReducer.observations
   );
-
   const match = _.find(observations, messier);
 
-  console.log(match);
   return (
     <>
       <Nav />
