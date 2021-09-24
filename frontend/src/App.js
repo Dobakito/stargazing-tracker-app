@@ -10,10 +10,12 @@ import Signup from './Routes/Signup';
 import AuthRoute from './Component/AuthRoute';
 import Welcome from './Routes/Welcome';
 import UserProfile from './Routes/UserProfile';
+import ScrollToTop from './Component/ScrollToTop';
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <div className='App'>
         <Segment
           style={{

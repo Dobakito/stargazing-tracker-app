@@ -14,7 +14,7 @@ const Welcome = () => {
             <Header as='h2' color='teal' textAlign='center'>
               <Icon name='space shuttle' size='huge' />
               Welcome to the Stargazer Tracker App. Please login to begin your
-              celestual journey!
+              celestial journey!
             </Header>
             <Button
               animated

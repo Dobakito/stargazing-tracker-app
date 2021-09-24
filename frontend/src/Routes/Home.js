@@ -26,14 +26,12 @@ const Home = () => {
   return (
     <>
       <Nav />
-      <Grid
-        textAlign='center'
-        style={{ height: '75vh' }}
-        verticalAlign='middle'>
+      <Grid textAlign='center' verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 800 }}>
           <Segment textAlign='center' inverted stacked>
             <Header as='h2' color='teal' textAlign='center'>
-              Please click an option in the Navbar to begin!
+              Please click an option in the Navbar to begin, <br /> or use the
+              search bar to find friends!
             </Header>
             <Header color='teal' as='h4'>
               Enjoy the NASA Astronomy Pic of the Day below.
