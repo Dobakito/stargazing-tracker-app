@@ -18,16 +18,9 @@ const SearchBar = () => {
     dispatch(getAllUsers());
   }, []);
 
-  const handleResultSelect = e => {
-    setValue(e.target.value);
-  };
-
   const handleSearchChange = e => {
     let value = e.target.value;
     setValue(value);
-    if (value.length < 1) {
-      return setResults([]);
-    }
     const re = new RegExp(_.escapeRegExp(value), 'i');
     const isMatch = result => re.test(result.username);
     setResults(_.filter(users, isMatch));
@@ -39,7 +32,6 @@ const SearchBar = () => {
 
   return (
     <Search
-      onResultSelect={handleResultSelect}
       onSearchChange={handleSearchChange}
       noResultsMessage='No users found.'
       resultRenderer={resultRenderer}
