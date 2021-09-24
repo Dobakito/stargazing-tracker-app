@@ -6,13 +6,13 @@ This React-Redux SPA with a Rails backend is for people who love to look into th
 
 ## INSTALLATION
 
-Simply clone this app and cd your terminal to the 'backend' folder within the app. Once there, type
+Simply clone this app and cd your terminal to the 'backend' folder within the app. Once there, type:
 
 ```bash
 bundle install
 ```
 
-to install all the neccessary gems to your computer. Next type
+to install all the neccessary gems to your computer. Next type:
 
 ```bash
 rails s
@@ -22,7 +22,13 @@ into the terminal to start up the database server.
 
 ## USAGE
 
-With the backend server running, cd your terminal to the 'frontend' folder and type
+With the backend server running, cd your terminal to the 'frontend' folder and type:
+
+```bash
+npm install
+```
+
+then, after the install of the packages is complete use the command:
 
 ```bash
 npm start
