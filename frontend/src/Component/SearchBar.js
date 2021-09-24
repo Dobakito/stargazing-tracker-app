@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import _ from 'lodash';
 import { Label, Search } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import * as JsSearch from 'js-search';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers } from '../Actions/userActions';
 
@@ -13,8 +12,6 @@ const SearchBar = () => {
   const badAllUsers = useSelector(state => state.searchReducer.users);
   const currentUser = useSelector(state => state.userReducer.user);
   const users = _.reject(badAllUsers, currentUser);
-  const search = new JsSearch.Search('username');
-  search.addDocument(users);
 
   const dispatch = useDispatch();
   useEffect(() => {

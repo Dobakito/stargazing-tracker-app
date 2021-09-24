@@ -13,7 +13,7 @@ const Welcome = () => {
           <Segment textAlign='center' inverted stacked>
             <Header as='h2' color='teal' textAlign='center'>
               <Icon name='space shuttle' size='huge' />
-              Welcome to the Stargazer Tracker App. Please login to begin your
+              Welcome to the Stargazing Tracker App. Please login to begin your
               celestial journey!
             </Header>
             <Button
