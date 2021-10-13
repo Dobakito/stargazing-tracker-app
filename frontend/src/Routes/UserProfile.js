@@ -21,7 +21,7 @@ const UserProfile = () => {
   useEffect(() => {
     dispatch(getObservations(user.id));
     dispatch(getFriends(currentUser.id));
-  }, []);
+  }, [user]);
 
   const handleClick = () => {
     dispatch(createFriend(currentUser.id, user.id));

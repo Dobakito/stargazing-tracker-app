@@ -38,7 +38,7 @@ const Home = () => {
             </Header>
             {renderMedia()}
             <Header as='h5' color='teal'>
-              Explanation:
+              Picture explination:
             </Header>
             <Header as='h5' color='teal'>
               "{apod.explanation}"
